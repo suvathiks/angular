@@ -19,17 +19,17 @@ body, html {
     line-height: 1.8;
 }
 
-.bgimg-1 {
+/* .bgimg-1 {
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-}
-
+} */
+/* 
 .bgimg-1 {
-    background-image: url('suvathi.jpg');
-    min-height: 100%;
-}
+    background-image: url('../../assets/suvathi.jpg');
+    /* min-height: 100%; */
+/* } */ 
 
 ol li {
     float: left;

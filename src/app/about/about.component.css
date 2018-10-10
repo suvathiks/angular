@@ -27,7 +27,7 @@ body, html {
 }
 
 .bgimg-1 {
-    background-image: url('suvathi.jpg');
+    background-image: url('../../assets/suvathi.jpg');
     min-height: 100%;
 }
 

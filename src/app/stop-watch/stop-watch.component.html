@@ -1,0 +1,12 @@
+<div>
+  <h1>StopWatch</h1>
+  <p class="time">{{formattedTime()}}</p>
+  <div class="buttons">
+    <button (click)="isWatching() ? stop() : start()">
+      {{isWatching() ? 'stop' : 'start'}}
+    </button>
+    <button (click)="clear()">
+      Clear
+    </button>
+  </div>
+</div>

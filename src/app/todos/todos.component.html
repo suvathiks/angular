@@ -1,0 +1,39 @@
+<div class="todos-content">
+  <h2>Todo's</h2>
+  <div class="todos-data">
+    <div class="todos-error">
+      <label *ngIf=isErrorMessageClosed>
+        {{errorMsg}}
+        <button (click)="closeErrorMessage()">X</button>
+      </label>
+    </div>
+    <div class="todos-input-data">
+      <div>
+        <input type="text" #inputData ng-model="inputData" placeholder="Enter ur text" />
+        <button (click)="addToDataArray(inputData.value)">+</button>
+      </div>
+    </div><br>
+    <div class="todos-data-list" *ngIf=dataArray.length>
+      <table>
+        <tbody>
+          <tr *ngFor='let todo of dataArray'>
+            <td width="25%">
+              <input type="checkbox" [(ngModel)]="todo.isChecked" checked="{{todo.isChecked ? 'checked' : '' }}"/>
+            </td>
+            <td width="50%" style="text-align: center;">
+              <div> 
+                <input type="text" class="input_tag" value="{{todo.message}}" *ngIf=!todo.isEdit (click)=enableEdit(todo) />
+                <input type="text" [(ngModel)]="todo.message" *ngIf="todo.isChecked && todo.isEdit" />&nbsp;
+                <button (click)="updateData(todo.id, todo.message)" *ngIf="todo.isChecked && todo.isEdit">save</button>
+          
+              </div>
+            </td>
+            <td width="25%" style="text-align: right">
+              <button (click)="removeMessage(todo)">X</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div><br>
+  </div>
+</div>

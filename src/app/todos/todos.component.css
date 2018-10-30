@@ -1,0 +1,34 @@
+.todos-container[_ngcontent-c1]{display:block;margin:100px auto;width:50vw;background-color:#eee;padding:20px 100px;border-radius:10px}.validation-error[_ngcontent-c1]{color:red;font-size:1.1em}.add-todo[_ngcontent-c1]{display:block;margin:0 auto;text-align:center}.todos[_ngcontent-c1]   ul[_ngcontent-c1]{list-style-type:none}.todos[_ngcontent-c1]   ul[_ngcontent-c1]   li[_ngcontent-c1]{-webkit-text-decoration-style:none;text-decoration-style:none;margin-left:100px;margin-right:100px;font-size:1.5em}.delete-button[_ngcontent-c1]{float:right;color:red}h1[_ngcontent-c1]{text-align:center;padding:20px}
+
+.todos-content {
+	font-style: oblique; 
+	font-family: monospace; 
+	background-color: #605fa0; 
+	font-size: large; 
+	color: #a52a2a;
+	width: 900px;
+    margin-left: auto;
+   	margin-right: auto;
+    overflow: hidden;
+    text-align: center;
+	padding: 1px;
+    height: 12%;
+}
+
+.todos-content h2 {
+    font-size: 35px;
+}
+
+.todos-data-list {
+	width: 600px;
+	height: auto;
+	margin-left: auto;
+	margin-right: auto;
+	background-color: #def8f9;
+	color: #d84c16;
+}
+
+.input_tag {
+	border-style: none;
+    background-color: #def8f9;
+}

@@ -28,66 +28,110 @@ export class TodosComponent implements OnInit {
   }
 
   public getTodos() {
-    this.apiService.getTodos().subscribe((data: Array<object>) => {
-      this.todosArray = data;
+    this.apiService.getTodos().subscribe((data) => {
+      this.dataArray = data.todos;
     });
   }
 
-
-  addToDataArray(value) {
-    if (value.length > 0) {
-      let data = new Message(value, (this.dataArray.length + 1), false, false);
-      this.dataArray.push(data);
-      this.errorMsg = '';
-      this.enableCheckMsg = '';
-    } else {
-      this.errorMsg = "String should not be EMPTY";
-      this.isErrorMessageClosed = true;
+  addTodo(value){
+    let body = {
+      "title":value,
+      "completed":false,
+      "username":" Rajan",
+      "createDate": Date.now()
     }
-
+ 
+    this.apiService.addTodo(body).subscribe(
+      data => {
+        this.getTodos();
+      },
+      err => {
+ 
+      }
+    )
+ 
   }
-
-  removeMessage(removeData) {
-    let index = this.dataArray.indexOf(removeData);
-    this.dataArray.splice(index, 1);
+    updateTodo(id, value, v)
+    {
+      let body = {
+        "completed":true,
+        "_id": id,
+        "__v": v,
+        "title":value,
+        "username": "Rajan",
+        "modifiedAt":Date.now(),
+        createdAt:Date.now(),
+      }
+      this.apiService.updateTodo(body).subscribe(
+        data => {
+          this.getTodos();
+        },
+        err => {
+ 
+        }
+      )
+      }
+ 
+  addToDataArray(value) {
+   if(value.length > 0) {
+    let data = new Message(value, (this.dataArray.length + 1), false, false);
+    this.dataArray.push(data);
+ 
+    this.addTodo(value);
+ 
+    this.errorMsg = '';
+    this.enableCheckMsg = '';
+   } else {
+     this.errorMsg = "String should not be EMPTY";
+     this.isErrorMessageClosed = true;
+   }
+ 
   }
-
+ 
+  removeMessage(todo, i) {
+    this.apiService.deleteTodo(todo._id).subscribe( data => {
+      if (data.success) {
+        this.getTodos();
+      }
+    })
+  }
+ 
   enableEdit(data) {
-    if (data.isChecked == true) {
+    if(data.isChecked == true) {
       data.isEdit = true;
       this.enableCheckMsg = '';
     }
   }
-
+ 
   updateData(id, value) {
-    for (let i = 0; i < this.dataArray.length; i++) {
-      if (this.dataArray[i].id == id) {
-        this.dataArray[i].message = value;
+    for(let i=0; i<this.dataArray.length; i++) {
+      if(this.dataArray[i].id == id) {
+        this.dataArray[i].title = value;
         this.dataArray[i].isEdit = false;
         this.dataArray[i].isChecked = false;
       }
     }
-
+ 
   }
-
+ 
   closeErrorMessage() {
     this.errorMsg = '';
     this.isErrorMessageClosed = false;
-
+ 
   }
-
-}
-
-export class Message {
-  message: string;
+ 
+ }
+ 
+ export class Message {
   id: number;
   isEdit: boolean;
   isChecked: boolean;
-
-  constructor(message, id, isEdit, isChecked) {
-    this.message = message;
-    this.id = id;
-    this.isEdit = isEdit;
-    this.isChecked = isChecked;
+  title : string;
+ 
+  constructor(title,id, isEdit, isChecked){
+      this.title = title;
+      this.id = id;
+      this.isEdit = isEdit;
+      this.isChecked = isChecked;
   }
-}
+ }

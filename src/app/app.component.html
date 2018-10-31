@@ -1,10 +1,11 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <a [routerLink]="'/home'"> Home </a>&nbsp;
-  <a [routerLink]="'/about'"> About Us </a>&nbsp;
-  <a [routerLink]="'/todos'"> Todo's </a>&nbsp;
-  <a [routerLink]="'/stopwatch'"> Stopwatch </a>
-</div>
+<div>
+<ul>
+  <li><a [routerLink]="'/home'"> Home </a></li>
+  <li><a [routerLink]="'/about'"> About Us </a></li>
+  <li><a [routerLink]="'/todos'"> Todo's </a></li>
+  <li><a [routerLink]="'/stopwatch'"> Stopwatch </a></li>
+  </ul>
+
 <div>
   <router-outlet></router-outlet>
 </div>
